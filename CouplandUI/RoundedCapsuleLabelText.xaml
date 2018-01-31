@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CouplandUI.RoundedCapsuleLabelText"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CouplandUI"
+             mc:Ignorable="d" 
+             FontFamily="Century Gothic"
+             FontSize="36">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Century Gothic" />
+            <Setter Property="FontSize" Value="36" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Century Gothic" />
+            <Setter Property="FontSize" Value="36" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0">
+            <!-- Rounded mask (stretches to fill Grid) -->
+            <Border Name="labelmask" Background="#000000" CornerRadius="7,0,0,7" />
+            <!-- Main content container -->
+            <StackPanel>
+                <!-- Use a VisualBrush of 'mask' as the opacity mask -->
+                <StackPanel.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=labelmask}"/>
+                </StackPanel.OpacityMask>
+                <!-- Any content -->
+                <Label x:FieldModifier="public" 
+                       x:Name="LabelContent" 
+                       Background="#FF3F3F46" 
+                       Content="ROUNDED LABEL" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <!-- Rounded mask (stretches to fill Grid) -->
+            <Border Name="mask" Background="#000000" CornerRadius="0,7,7,0" />
+            <!-- Main content container -->
+            <StackPanel>
+                <!-- Use a VisualBrush of 'mask' as the opacity mask -->
+                <StackPanel.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=mask}"/>
+                </StackPanel.OpacityMask>
+                <!-- Any content -->
+                <TextBox BorderBrush="Transparent" BorderThickness="0" 
+                         x:FieldModifier="public" 
+                         x:Name="TextContent" 
+                         VerticalAlignment="Stretch" 
+                         Foreground="#bbbbbb" 
+                         Background="Transparent"
+                         TextAlignment="Left" 
+                         Text="ROUlkjNDED LABEL" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
